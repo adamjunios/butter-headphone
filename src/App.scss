@@ -1,4 +1,5 @@
 $main: #f0d8bb;
+$secondary: #f0c7bb;
 $white: #ffffff;
 $black: #1e1f13;
 
@@ -8,6 +9,11 @@ $black: #1e1f13;
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
   font-weight: 900;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -15,22 +21,98 @@ body {
   margin: 0;
   background-color: $main;
   color: $black;
-  &:before {
-    animation: grain 8s steps(10) infinite;
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/paper-pattern.png");
-    content: "";
-    height: 300%;
-    left: -50%;
-    opacity: 0.3;
-    position: fixed;
-    top: -100%;
-    width: 300%;
-  }
-  &.no-scroll {
-    overflow-y: hidden;
-  }
+  // &:before {
+  //   animation: grain 8s steps(10) infinite;
+  //   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/paper-pattern.png");
+  //   content: "";
+  //   height: 300%;
+  //   left: -50%;
+  //   opacity: 0.3;
+  //   position: fixed;
+  //   top: -100%;
+  //   width: 300%;
+  // }
+  // &.no-scroll {
+  //   overflow-y: hidden;
+  // }
 }
 
+//Header
+header {
+  font-size: 16px;
+  position: fixed;
+  padding: 0 1rem;
+  width: 100vw;
+  font-weight: "700";
+  background-color: $secondary;
+  // background-image: $main,
+  //   url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/paper-pattern.png")
+  //     30%;
+  background-repeat: no-repeat;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  z-index: 9999;
+  .nav {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      a {
+        padding: 2rem;
+        color: $black;
+        text-decoration: none;
+      }
+    }
+    &__menu {
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.5s ease;
+      margin-top: 0.25rem;
+      border-radius: 0.25rem;
+    }
+    &__hamburger {
+      position: relative;
+      width: 2.3rem;
+      &,
+      &::before,
+      &::after {
+        height: 3px;
+        background-color: $black;
+        display: inline-block;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        width: 2rem;
+        transition: all 0.2s;
+      }
+
+      &::before {
+        top: -0.6rem;
+      }
+      &::after {
+        top: 0.6rem;
+      }
+    }
+    &__menu:hover {
+      background-color: $main;
+      &__hamburger::before {
+        top: -1rem;
+      }
+      &__hamburger::after {
+        top: 1rem;
+      }
+    }
+  }
+}
 @keyframes grain {
   0%,
   100% {
@@ -65,8 +147,6 @@ body {
   }
 }
 
-//Header
-
 .container {
   flex-grow: 1;
   margin: 0 auto;
@@ -97,40 +177,6 @@ body {
     }
     &.center {
       justify-content: center;
-    }
-  }
-}
-
-header {
-  font-size: 16px;
-  position: fixed;
-  z-index: 99;
-  width: 100%;
-  font-weight: "700";
-  .container {
-    .row {
-      height: 128px;
-      .logo {
-        a {
-          color: $black;
-          text-decoration: none;
-        }
-      }
-      .menu {
-        cursor: pointer;
-        border-radius: 100%;
-        border: 1px solid $black;
-        height: 80px;
-        width: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.3s ease-in-out;
-        &:hover {
-          color: $white;
-          background: $black;
-        }
-      }
     }
   }
 }

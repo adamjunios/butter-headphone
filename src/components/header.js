@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
-      <div className="container">
-        <div className="row space-between">
-          <div className="logo">
-            <Link to="/">JIMMY FERMIN</Link>
-          </div>
-          <div className="menu">MENU</div>
+      <div className="nav">
+        <div className="logo">
+          <Link to="/">BUTTER HEADPHONE</Link>
+        </div>
+        <div className="nav__menu">
+          <span className="nav__hamburger">&nbsp;</span>
         </div>
       </div>
     </header>
